@@ -3,14 +3,15 @@ var bio = {
 	"role" : "Web Developer",
 	"location" : "Tampa, FL",
 	"contacts" : {
-		"mobile" : "3347821568",
+		"mobile" : "(334)782-1568",
 		"email" : "lee4gitr@gmail.com",
 		"github" : "lee4gitr",
-		"location" : "Tampa"
+		"twitter" : "@lee4gitr59",
+		"location" : "Tampa, FL"
 	},
 	"welcome_message" : "Hi! My name is Aubrey and this is my Resume!",
 	"skills" : [
-		"Teaching", "JavaScript", "Git","Programming"
+		"Communication", "JavaScript", "Github","HTML", "CSS"
 		],
 	"picture_URL" : "images/AubreyMillsPicture.jpg"
 }
@@ -31,6 +32,13 @@ var work = {
 			"location" : "Birmingham, AL, US",
 			"dates" : "2012 - 2013",
 			"description" : " Run lights and sound for presentations for various departments."
+		},
+		{
+			"employer" : "Alabama Supreme Court",
+			"title" : "Clerk I",
+			"location" : "Montgomery, AL, US",
+			"dates" : "2010",
+			"description" : "Organize and file previous hard-copy cases into a digital format."
 		},
 		{
 			"employer" : "Self",
@@ -95,29 +103,55 @@ var projects = {
 	]
 }
 
-formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-$("#header").prepend(formattedRole);
-formattedName = HTMLheaderName.replace("%data%", bio.name);
-$("#header").prepend(formattedName);
-formattedBioPic = HTMLbioPic.replace("%data%", bio.picture_URL);
-$("#header").prepend(formattedBioPic);
-formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcome_message);
-$("#header").append(formattedWelcomeMsg);
+function displayHeader () {
 
+	formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+	$("#header").prepend(formattedRole);
+	formattedName = HTMLheaderName.replace("%data%", bio.name);
+	$("#header").prepend(formattedName);
+	formattedBioPic = HTMLbioPic.replace("%data%", bio.picture_URL);
+	$("#header").prepend(formattedBioPic);
 
-if (bio.skills.length>0) {
+	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+	$('#topContacts').append(formattedMobile);
+	var formattedEmail = HTMLemail.replace ("%data%", bio.contacts.email);
+	$('#topContacts').append(formattedEmail);
+	var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+	$('#topContacts').append(formattedGithub);
+	var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+	$('#topContacts').append(formattedTwitter);
+
+	formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcome_message);
+	$("#header").append(formattedWelcomeMsg);
+
+	if (bio.skills.length>0) {
 	
-	$('#header').append(HTMLskillsStart);
+		$('#header').append(HTMLskillsStart);
 
-	var formattedSkill = HTMLskills.replace("%data%" , bio.skills[0]);
-	$("#skills").append(formattedSkill); 
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-	$("#skills").append(formattedSkill); 
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-	$("#skills").append(formattedSkill); 
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-	$("#skills").append(formattedSkill); 
+		for (i = 0; i < bio.skills.length; i++) {
+
+			var formattedSkill = HTMLskills.replace("%data%" , bio.skills[i]);
+			$("#skills").append(formattedSkill); 
+		}
+	}
 }
+
+displayHeader();
+
+function displayFooter () {
+
+	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+	$('#footerContacts').append(formattedMobile);
+	var formattedEmail = HTMLemail.replace ("%data%", bio.contacts.email);
+	$('#footerContacts').append(formattedEmail);
+	var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+	$('#footerContacts').append(formattedGithub);
+	var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+	$('#footerContacts').append(formattedTwitter);
+
+}
+
+displayFooter();
 
 function displayWork () {
 	for (job in work.jobs) {
@@ -189,5 +223,18 @@ function displayOnline () {
 	}
 }
 displayOnline ();
+
+$('#main').append(internationalizeButton);
+
+
+function inName(intNames) {
+	intNames = intNames.trim().split(" ");
+	var firstName = intNames[0][0].toUpperCase() + intNames[0].slice(1).toLowerCase();
+	var lastName = intNames[1].toUpperCase();
+	console.log($("#name").text());
+	return firstName + " " + lastName;
+}
+
+inName(bio.name);
 
 $('#mapDiv').append(googleMap);
