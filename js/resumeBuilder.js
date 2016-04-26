@@ -158,7 +158,7 @@ work.display = function (){
 
 education.display = function (){
 	
-	for (school in education.schools) {
+	for (var school in education.schools) {
 	$('#education').append(HTMLschoolStart);
 
 	var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
@@ -172,7 +172,7 @@ education.display = function (){
 	$(".education-entry:last").append(formattedMajor);
 	}
 	$('#education').append(HTMLonlineClasses);
-	for (online in education.online) {
+	for (var online in education.online) {
 		$('#education').append(HTMLschoolStart);
 		var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.online[online].title);
 		var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.online[online].school);
@@ -186,7 +186,7 @@ education.display = function (){
 };
 
 projects.display = function () {
-	for (project in projects.projects) {
+	for (var project in projects.projects) {
 	$('#projects').append(HTMLprojectStart);
 
 	var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
@@ -208,7 +208,7 @@ function inName(intNames) {
 	var lastName = intNames[1].toUpperCase();
 	console.log($("#name").text());
 	return firstName + " " + lastName;
-};
+}
 
 inName(bio.name);
 
