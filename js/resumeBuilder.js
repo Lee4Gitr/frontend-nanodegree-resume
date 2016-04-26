@@ -1,7 +1,6 @@
 var bio = {
 	"name" : "Aubrey Mills",
 	"role" : "Web Developer",
-	"location" : "Tampa, FL",
 	"contacts" : {
 		"mobile" : "(334)782-1568",
 		"email" : "lee4gitr@gmail.com",
@@ -13,9 +12,46 @@ var bio = {
 	"skills" : [
 		"Communication", "JavaScript", "Github","HTML", "CSS"
 		],
-	"picture_URL" : "images/AubreyMillsPicture.jpg"
+	"biopic" : "images/AubreyMillsPicture.jpg"
 }
 
+var education = {
+	"schools": [
+		{
+			"name" : "Alabama School of Math and Science",
+			"location" : "Mobile, AL, US",
+			"degree": "N/A",
+			"major" : "N/A",
+			"dates" : "2007 - 2008",
+			"url" : "http://www.asms.net/"
+			
+		},
+		{
+			"name" : "Andalusia High School",
+			"location" : "Andalusia, AL, US",
+			"degree" : "Advanced Diploma",
+			"major" : "N/A",
+			"dates" : "2005-2007 and 2008-2009",
+			"url" : "http://andalusiahighschool.al.ach.schoolinsites.com/"
+		},
+		{
+			"name" : "University of Alabama at Birmingham",
+			"location" : "Birmingham, AL, US",
+			"degree" : "Bachelor of Arts",
+			"major" : "Music Technology Cum Laude with Departmental Honors",
+			"dates" : "2009-2013",
+			"url" : ""
+		}
+	],
+	"online": [
+		{
+			"title" : "Front End Nanodegree",
+			"school" : "Udacity",
+			"dates" : "2016",
+			"url" : "https://www.udacity.com"
+		}
+	]
+}
 
 var work = {
 	"jobs": [
@@ -57,47 +93,13 @@ var work = {
 	]
 }
 
-var education = {
-	"schools": [
-		{
-			"name" : "Alabama School of Math and Science",
-			"location" : "Mobile, AL, US",
-			"years" : "2007 - 2008",
-			"degree": "N/A",
-			"major" : "N/A"
-		},
-		{
-			"name" : "Andalusia High School",
-			"location" : "Andalusia, AL, US",
-			"years" : "2005-2007 and 2008-2009",
-			"degree" : "Advanced Diploma",
-			"major" : "N/A"
-		},
-		{
-			"name" : "University of Alabama at Birmingham",
-			"location" : "Birmingham, AL, US",
-			"degree" : "Bachelor of Arts",
-			"major" : "Music Technology Cum Laude with Departmental Honors",
-			"years" : "2009-2013"
-		}
-	],
-	"online": [
-		{
-			"title" : "Front End Nanodegree",
-			"school" : "Udacity",
-			"dates" : "2016",
-			"url" : "https://www.udacity.com"
-		}
-	]
-}
-
 var projects = {
 	"projects": [
 		{
 			"title" : "Personal Website",
 			"dates" : " 2016",
 			"description" : "My first website.",
-			"imagesURL" : ["images/320px-Downtowntampa08.jpg"
+			"imagesURL" : ["images/320px-Downtowntampa08.jpg" 
 			]
 		}
 	]
@@ -109,7 +111,7 @@ function displayHeader () {
 	$("#header").prepend(formattedRole);
 	formattedName = HTMLheaderName.replace("%data%", bio.name);
 	$("#header").prepend(formattedName);
-	formattedBioPic = HTMLbioPic.replace("%data%", bio.picture_URL);
+	formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
 	$("#header").prepend(formattedBioPic);
 
 	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
@@ -181,7 +183,7 @@ function displayEducation () {
 	$(".education-entry:last").append(formattedSchoolNameLocation);
 	var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
 	$(".education-entry:last").append(formattedDegree);
-	var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].years);
+	var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
 	$(".education-entry:last").append(formattedSchoolDates);
 	var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
 	$(".education-entry:last").append(formattedMajor);
